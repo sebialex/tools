@@ -46,6 +46,7 @@ sudo apt-get install -y apt
 
 # Install tools
 sudo apt install -y vim
+sudo apt install -y chromium-browser
 
 # Install Java
 sudo apt-get install -y openjdk-8-jdk
@@ -86,4 +87,10 @@ else
    echo "MS Code already installed: $(code --version)"
 fi
 
+# Remove stuff
+sudo apt-get remove -y --purge libreoffice* > /dev/null
+sudo apt-get clean
+sudo apt-get autoremove -y
+
 rm -rf target
+
