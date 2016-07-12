@@ -1,5 +1,7 @@
 #!/bin/bash
 
+REFRESH_RATE=60
+RESOLUTIONS="1920x1080"
 FORCE=
 
 chmod +x ./*.sh
@@ -87,7 +89,24 @@ else
    echo "MS Code already installed: $(code --version)"
 fi
 
+# Add resolutions if they do not exist, mostly for VMs
+for resolution in $RESOLUTIONS
+do    
+    echo "Attemtping to add resolution: $resolution" 
+    if [ -z "$(xrandr -q | grep $resolution | cat)" ]; then
+        WIDTH=`echo $resolution | cut -d'x' -f1`
+        HEIGHT=`echo $resolution | cut -d'x' -f2`
+        NEW_MODE=`sudo cvt $WIDTH $HEIGHT $REFRESH_RATE | grep Modeline | sed -e "s/^Modeline //"`
+        sudo xrandr --newmode $NEW_MODE
+        DEVICE_NAME=`sudo xrandr -q | grep "connected primary" | cut -d' ' -f1`
+        sudo xrandr --addmode $DEVICE_NAME $WIDTHx$HEIGHT_$REFRESH_RATE.00
+    else
+        echo "Resolution $resolution already present, will not add."
+    fi
+done
+
 # Remove stuff
+echo "Removing stuff"
 sudo apt-get remove -y --purge libreoffice* > /dev/null
 sudo apt-get clean
 sudo apt-get autoremove -y
