@@ -113,7 +113,7 @@ done
 sudo add-apt-repository ppa:fingerprint/fprint
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get install libfprint0 fprint-demo libpam-fprintd
+sudo apt-get install -y libfprint0 fprint-demo libpam-fprintd
 
 # Remove stuff
 echo "Removing stuff"
