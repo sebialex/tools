@@ -44,11 +44,15 @@ function add_to_path {
 
 ./apt-update.sh
 
+sudo apt-get upgrade
+
 sudo apt-get install -y apt
 
 # Install tools
 sudo apt install -y vim
 sudo apt install -y chromium-browser
+sudo apt install -y kraken
+ 
 
 # Install Java
 sudo apt-get install -y openjdk-8-jdk
@@ -104,6 +108,12 @@ do
         echo "Resolution $resolution already present, will not add."
     fi
 done
+
+# Fingerprint
+sudo add-apt-repository ppa:fingerprint/fprint
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install libfprint0 fprint-demo libpam-fprintd
 
 # Remove stuff
 echo "Removing stuff"
