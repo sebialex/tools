@@ -44,7 +44,7 @@ function add_to_path {
 
 ./apt-update.sh
 
-sudo apt-get upgrade
+sudo apt-get upgrade -y
 
 sudo apt-get install -y apt
 
@@ -112,8 +112,8 @@ done
 # Fingerprint
 sudo add-apt-repository ppa:fingerprint/fprint
 sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install -y libfprint0 fprint-demo libpam-fprintd
+sudo apt-get upgrade -y
+sudo echo | apt-get install -y libfprint0 fprint-demo libpam-fprintd
 
 # Remove stuff
 echo "Removing stuff"
