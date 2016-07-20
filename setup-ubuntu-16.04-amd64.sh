@@ -13,7 +13,7 @@ fi
 mkdir target
 
 # Create .bash_profile if it does not exist, and source .bashrc in  it
-if [ ! -d ~/.bash_profile ] || [ -z $(cat ~/.bash_profile | grep bashrc | cat) ]; then
+if [ ! -f ~/.bash_profile ] || [ -z "$(cat ~/.bash_profile | grep bashrc | cat)" ]; then
    echo >> ~/.bash_profile
    echo "source ~/.bashrc" >> ~/.bash_profile
 fi
@@ -51,8 +51,9 @@ sudo apt-get install -y apt
 # Install tools
 sudo apt install -y vim
 sudo apt install -y chromium-browser
-sudo apt install -y kraken
- 
+sudo apt install -y krusader
+sudo apt install -y gitkraken
+sudo apt install -y terminator
 
 # Install Java
 sudo apt-get install -y openjdk-8-jdk
@@ -110,10 +111,10 @@ do
 done
 
 # Fingerprint
-sudo add-apt-repository ppa:fingerprint/fprint
-sudo apt-get update
-sudo apt-get upgrade -y
-sudo echo | apt-get install -y libfprint0 fprint-demo libpam-fprintd
+#sudo add-apt-repository ppa:fingerprint/fprint
+#sudo apt-get update
+#sudo apt-get upgrade -y
+#sudo echo | apt-get install -y libfprint0 fprint-demo libpam-fprintd
 
 # Remove stuff
 echo "Removing stuff"
