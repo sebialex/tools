@@ -54,6 +54,7 @@ sudo apt install -y chromium-browser
 sudo apt install -y krusader
 sudo apt install -y gitkraken
 sudo apt install -y terminator
+sudo apt install -y konsole 
 
 # Install Java
 sudo apt-get install -y openjdk-8-jdk
@@ -115,6 +116,13 @@ done
 #sudo apt-get update
 #sudo apt-get upgrade -y
 #sudo echo | apt-get install -y libfprint0 fprint-demo libpam-fprintd
+
+# Set up DNS
+RESOLV_CONF_FILE=/etc/resolvconf/resolv.conf.d/base
+if [ ! -f $RESOLV_CONF_FILE ] || [ -z "$(cat $RESOLV_CONF_FILE | grep "8.8.8.8" | cat)" ]; then
+   echo "nameserver 8.8.8.8" >> $RESOLV_CONF_FILE
+fi
+
 
 # Remove stuff
 echo "Removing stuff"
