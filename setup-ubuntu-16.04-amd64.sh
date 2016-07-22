@@ -54,7 +54,8 @@ sudo apt install -y chromium-browser
 sudo apt install -y krusader
 sudo apt install -y gitkraken
 sudo apt install -y terminator
-sudo apt install -y konsole 
+sudo apt install -y konsole
+sudo apt install -y shutter 
 
 # Install Java
 sudo apt-get install -y openjdk-8-jdk
