@@ -49,13 +49,8 @@ sudo apt-get upgrade -y
 sudo apt-get install -y apt
 
 # Install tools
-sudo apt install -y vim
-sudo apt install -y chromium-browser
-sudo apt install -y krusader
-sudo apt install -y gitkraken
-sudo apt install -y terminator
-sudo apt install -y konsole
-sudo apt install -y shutter 
+sudo apt install -y vim chromium-browser krusader gitkraken terminator konsole shutter htop
+
 
 # Install Java
 sudo apt-get install -y openjdk-8-jdk
@@ -120,8 +115,8 @@ done
 
 # Set up DNS
 RESOLV_CONF_FILE=/etc/resolvconf/resolv.conf.d/base
-if [ ! -f $RESOLV_CONF_FILE ] || [ -z "$(cat $RESOLV_CONF_FILE | grep "8.8.8.8" | cat)" ]; then
-   echo "nameserver 8.8.8.8" >> $RESOLV_CONF_FILE
+if [ ! -f $RESOLV_CONF_FILE ] || [ -z "$(cat $RESOLV_CONF_FILE | grep "8.8.8.8" | cat)" ]; then  
+   echo "nameserver 8.8.8.8" | sudo tee $RESOLV_CONF_FILE > /dev/null
 fi
 
 
