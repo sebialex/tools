@@ -49,7 +49,7 @@ sudo apt-get upgrade -y
 sudo apt-get install -y apt
 
 # Install tools
-sudo apt install -y vim chromium-browser krusader gitkraken terminator konsole shutter htop
+sudo apt install -y vim chromium-browser krusader gitkraken terminator konsole shutter htop traceroute
 
 
 # Install Java
@@ -120,8 +120,12 @@ if [ ! -f $RESOLV_CONF_FILE ] || [ -z "$(cat $RESOLV_CONF_FILE | grep "8.8.8.8" 
 fi
 
 
+# Aliases
+echo; echo "Copying bash aliases"; echo 
+cp -f bash_aliases ~/.bash_aliases
+
 # Remove stuff
-echo "Removing stuff"
+echo; echo "Removing stuff"; echo
 sudo apt-get remove -y --purge libreoffice* > /dev/null
 sudo apt-get clean
 sudo apt-get autoremove -y
