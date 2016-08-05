@@ -49,8 +49,9 @@ sudo apt-get upgrade -y
 sudo apt-get install -y apt
 
 # Install tools
-sudo apt install -y vim chromium-browser krusader gitkraken terminator konsole shutter htop traceroute
-
+sudo apt install -y vim tree htop traceroute terminator 
+sudo apt install -y chromium-browser gitkraken shutter konsole krusader ffmpeg gtk-recordmydesktop
+sudo apt install -y postgresql postgresql-contrib postgresql-client pgadmin3
 
 # Install Java
 sudo apt-get install -y openjdk-8-jdk
@@ -63,6 +64,9 @@ export_to_bashrc "MAVEN_OPTS" "\"-Xmx2g -XX:MaxPermSize=256m\""
 export_to_bashrc "M2_HOME" "/usr/share/maven"
 add_to_path "M2_HOME/bin"
 
+# PostgreSQL
+#echo "\password postgres" | sudo -u postgres psql postgres
+#sudo -u postgres createdb sonarqube
 
 # Install NodeJS
 if [ -z $(node --version | grep "^v[0-9]*" | cat) ] || [ "$FORCE" ]; then
