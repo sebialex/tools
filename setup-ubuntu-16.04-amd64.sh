@@ -42,18 +42,33 @@ function add_to_path {
    fi
 }
 
+
 ./apt-update.sh
 
 sudo apt-get upgrade -y
+sudo apt-get install -y apt apt-transport-https ca-certificates
 
-sudo apt-get install -y apt
+# Docker
+sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+
+# Sources
+echo; echo "Copying bash aliases"; echo 
+sudo cp -f my-sources.list /etc/apt/sources.list.d/
+
+
+sudo apt update
 
 # Install tools
 sudo apt install -y git vim tree htop traceroute terminator 
 sudo apt install -y chromium-browser gitkraken shutter konsole krusader ffmpeg gtk-recordmydesktop
 sudo apt install -y postgresql postgresql-contrib postgresql-client pgadmin3
 sudo apt install -y python-pip build-essential libssl-dev python2.7-dev libxml2-dev libxslt1-dev
-sudo apt install -y docker
+
+# Docker 
+sudo apt-get purge lxc-docker
+apt-cache policy docker-engine
+sudo apt install -y docker-engine
+
 
 # Install Java
 sudo apt-get install -y openjdk-8-jdk
