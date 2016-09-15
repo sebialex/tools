@@ -59,7 +59,7 @@ sudo cp -f my-sources.list /etc/apt/sources.list.d/
 sudo apt update
 
 # Install tools
-sudo apt install -y git vim tree htop traceroute terminator 
+sudo apt install -y git vim tree htop traceroute terminator shellcheck gpg2
 sudo apt install -y chromium-browser gitkraken shutter konsole krusader ffmpeg gtk-recordmydesktop
 sudo apt install -y postgresql postgresql-contrib postgresql-client pgadmin3
 sudo apt install -y python-pip build-essential libssl-dev python2.7-dev libxml2-dev libxslt1-dev
