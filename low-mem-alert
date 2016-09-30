@@ -6,6 +6,8 @@
 
 # daemon --name="yourservicename" --output=log.txt sh yourscript.sh
 
+# daemon --name="lowMemAlert" sh /home/sebastian/gene42/git/tools/low-mem-alert
+
 THRESHOLD_PERC=80
 SLEEP_INTERVAL=30
 
