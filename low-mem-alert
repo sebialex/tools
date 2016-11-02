@@ -8,6 +8,8 @@
 
 # daemon --name="lowMemAlert" sh /home/sebastian/gene42/git/tools/low-mem-alert
 
+# daemon --name="lowMemAlert" --output=/home/ubuntu/clients/niaid/log.txt sh /home/ubuntu/clients/niaid/pt-niaid-1.0/start.sh
+
 THRESHOLD_PERC=80
 SLEEP_INTERVAL=30
 

@@ -24,12 +24,22 @@ function export_to_bashrc {
    local key=$1
    local value=$2
    
-   local result=`cat ~/.bashrc | grep "$key=" | cat`
+   if [ "$value" ]; then      
+     local result=`cat ~/.bashrc | grep "$key=" | cat`
 
-   if [ -z "$result" ]; then
-      echo >> ~/.bashrc
-      echo "export $key=$value" >> ~/.bashrc
+     if [ -z "$result" ]; then
+         echo >> ~/.bashrc
+         echo "export $key=$value" >> ~/.bashrc
+     fi
+   else
+     local result=`cat ~/.bashrc | grep "$key" | cat`
+
+     if [ -z "$result" ]; then
+         echo >> ~/.bashrc
+         echo "$key" >> ~/.bashrc
+     fi
    fi
+
 }
 
 function add_to_path {
@@ -144,6 +154,12 @@ fi
 # Aliases
 echo; echo "Copying bash aliases"; echo 
 cp -f bash_aliases ~/.bash_aliases
+
+# My custom bashrc
+echo; echo "Copying my_bashrc"; echo 
+cp -f my_bashrc.sh ~/.my_bashrc
+
+export_to_bashrc "source ~/.my_bashrc"
 
 # Remove stuff
 echo; echo "Removing stuff"; echo
