@@ -1,16 +1,7 @@
 #!/bin/sh
 
-#export DISPLAY=:0
-
-# Minimum total (ram + swap) percentage before message is displayed
-
-# daemon --name="yourservicename" --output=log.txt sh yourscript.sh
-
-# daemon --name="lowMemAlert" sh /home/sebastian/gene42/git/tools/low-mem-alert
-
-# daemon --name="lowMemAlert" --output=/home/ubuntu/clients/niaid/log.txt sh /home/ubuntu/clients/niaid/pt-niaid-1.0/start.sh
-
 THRESHOLD_PERC=80
+THRESHOLD_KILL_PERC=95
 SLEEP_INTERVAL=30
 
 while :
@@ -33,8 +24,12 @@ do
         /usr/bin/notify-send "Memory is running out!" "$message"
     fi
 
+    if [ "$mem_usage_perc" -gt "$THRESHOLD_KILL_PERC" ]; then
+        pkill chromium
+    fi
+
     echo "$message"
 
-     sleep $SLEEP_INTERVAL
+    sleep $SLEEP_INTERVAL
 
 done
